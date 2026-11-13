@@ -1,0 +1,123 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+  - Class: nav2_rviz_plugins/Navigation 2
+    Name: Navigation 2
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz_default_plugins/MarkerArray
+      Name: World (3D)
+      Enabled: true
+      Topic:
+        Value: /world_markers
+        Reliability Policy: Reliable
+        Durability Policy: Transient Local
+    - Class: rviz_default_plugins/Grid
+      Name: Grid
+      Enabled: false
+    - Class: rviz_default_plugins/Map
+      Name: Global costmap
+      Enabled: true
+      Topic:
+        Value: /global_costmap/costmap
+        Reliability Policy: Reliable
+        Durability Policy: Transient Local
+      Color Scheme: costmap
+      Alpha: 0.5
+    - Class: rviz_default_plugins/Map
+      Name: Local costmap
+      Enabled: true
+      Topic:
+        Value: /local_costmap/costmap
+        Reliability Policy: Reliable
+        Durability Policy: Transient Local
+      Color Scheme: costmap
+      Alpha: 0.7
+    - Class: rviz_default_plugins/Path
+      Name: Plan
+      Enabled: true
+      Topic:
+        Value: /plan
+      Color: 0; 255; 0
+    - Class: rviz_default_plugins/LaserScan
+      Name: LaserScan
+      Enabled: true
+      Topic:
+        Value: /scan
+        Reliability Policy: Best Effort
+      Size (m): 0.05
+    - Class: rviz_default_plugins/Odometry
+      Name: CAR (position + heading)
+      Enabled: true
+      Topic:
+        Value: /odom
+        Reliability Policy: Best Effort
+      Keep: 1
+      Shape:
+        Value: Arrow
+        Alpha: 1
+        Color: 255; 0; 255
+        Head Length: 2.5
+        Head Radius: 1.0
+        Shaft Length: 4.0
+        Shaft Radius: 0.4
+      Covariance:
+        Value: false
+    - Class: rviz_default_plugins/MarkerArray
+      Name: CAMERA field of view
+      Enabled: true
+      Topic:
+        Value: /camera/fov_marker
+    - Class: rviz_default_plugins/Image
+      Name: CAMERA image
+      Enabled: true
+      Topic:
+        Value: /camera/image_raw
+        Reliability Policy: Best Effort
+    - Class: rviz_default_plugins/Pose
+      Name: WAYPOINT you clicked (red)
+      Enabled: true
+      Topic:
+        Value: /nav_goal
+      Shape:
+        Value: Arrow
+        Color: 255; 0; 0
+        Head Length: 2.5
+        Head Radius: 1.0
+        Shaft Length: 4.0
+        Shaft Radius: 0.4
+    - Class: rviz_default_plugins/Pose
+      Name: WAYPOINT sent to Nav2 (yellow)
+      Enabled: true
+      Topic:
+        Value: /nav_goal_sent
+      Shape:
+        Value: Arrow
+        Color: 255; 220; 0
+        Head Length: 2.5
+        Head Radius: 1.0
+        Shaft Length: 4.0
+        Shaft Radius: 0.4
+    - Class: rviz_default_plugins/RobotModel
+      Name: RobotModel
+      Enabled: true
+      Description Source: Topic
+      Description Topic:
+        Value: /robot_description
+  Global Options:
+    Fixed Frame: odom
+    Frame Rate: 30
+  Tools:
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/SetGoal
+      Topic:
+        Value: /nav_goal
+  Value: true
+  Views:
+    Current:
+      Class: rviz_default_plugins/TopDownOrtho
+      Scale: 8
+      Target Frame: base_footprint
+      X: 0
+      Y: 0

@@ -1,0 +1,30 @@
+lidar_obstacle_detector:
+  ros__parameters:
+    scan_topic: /scan
+    base_frame: base_footprint     # ground frame of the vehicle (see enimia.urdf)
+    # ground rejection: the lidar is 0.78 m high and tilted 4 deg down, so the forward beam
+    # reaches the road around 10-11 m (measured in simulation: ground hits show up at z = 0.06-0.08 m
+    # in base_frame). Points are moved to base_frame and the ones below
+    # z_min are dropped.
+    z_min: 0.12
+    z_max: 2.0
+    x_min: -1.0
+    x_max: 15.0
+    y_max: 8.0
+    # area occupied by the vehicle (ignored): x in [-1.3, 1.5], |y| < 0.5
+    self_x_min: -1.3
+    self_x_max: 1.5
+    self_half_width: 0.5
+    # segmentation
+    eps_base: 0.25                 # m
+    eps_scale: 2.0                 # x range x angle increment
+    min_points: 2
+    single_point_range: 12.0       # m: beyond this one point is enough (a far thin cone gets 1 beam); was 5, too short for 5.5 m/s
+    # lanes (road 7 m = 2 lanes of 3.5 m)
+    lane_width: 3.5
+    adjacent_side: left            # lane we would change to (vehicle starts in the right lane)
+    ego_lane_offset: 0.0           # m the vehicle is left of its lane centre (from the lane detector later)
+    # corridors used for the clear distances
+    vehicle_half_width: 0.385
+    corridor_margin: 0.30
+    front_x: 1.445                 # x of the front bumper in base_frame

@@ -1,0 +1,10 @@
+# RPLIDAR A1M8 (360 deg, ~5.5-8 Hz real, 0.15-12 m). Frame = lidar_link from enimia.urdf.
+rplidar_node:
+  ros__parameters:
+    channel_type: serial
+    serial_port: /dev/ttyUSB0
+    serial_baudrate: 115200      # A1/A2M8 = 115200, A2M7/A3 = 256000
+    frame_id: lidar_link
+    inverted: false
+    angle_compensate: true
+    scan_mode: Sensitivity

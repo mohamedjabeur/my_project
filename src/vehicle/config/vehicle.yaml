@@ -1,0 +1,30 @@
+# Shared by the simulation and the real car. Geometry = enimia.urdf.
+ackermann_controller:
+  ros__parameters:
+    wheelbase: 1.704
+    max_steer: 0.21          # rad
+    max_speed: 5.6           # m/s (20 km/h = 5.56)
+    max_accel: 1.5           # m/s^2
+    max_decel: 5.0           # 0.5 g: stops from 20 km/h in 3 m (braking only, no latency)
+    max_steer_rate: 1.0      # rad/s
+
+esp32_bridge:
+  ros__parameters:
+    baud: 115200
+    ticks_per_rev: 90        # ticks per WHEEL revolution = hall states (6) x motor pole pairs x gear ratio. MEASURE IT.
+    cmd_timeout: 0.5
+
+virtual_esp32:
+  ros__parameters:
+    rear_wheel_radius: 0.18
+    ticks_per_rev: 90        # keep equal to esp32_bridge so odometry behaves the same
+    motor_tau: 0.25
+    motor_max_accel: 5.0          # must allow the 5 m/s^2 braking above (also caps acceleration, but ackermann max_accel 1.5 comes first)
+    servo_tau: 0.08
+    tick_noise: 0.0          # ticks of jitter on the virtual encoder (try 0.5 to test robustness)
+
+wheel_odometry:
+  ros__parameters:
+    rear_wheel_radius: 0.18
+    wheelbase: 1.704
+    rear_axle_to_base: 0.852

@@ -1,0 +1,20 @@
+# Front camera driver. Calibration = the one of the simulated camera in enimia.urdf
+# (800x450, HFOV 100 deg, pinhole, no distortion). Replace with the real checkerboard
+# calibration (ros2 run camera_calibration cameracalibrator) once the real camera is mounted.
+camera_driver:
+  ros__parameters:
+    device: /dev/video0
+    width: 800
+    height: 450
+    fps: 15.0
+    frame_id: camera_optical_link
+    # intrinsics given at calib_width x calib_height; scaled automatically if the camera
+    # delivers another resolution with the same aspect ratio
+    calib_width: 800
+    calib_height: 450
+    fx: 335.65
+    fy: 335.65
+    cx: 400.0
+    cy: 225.0
+    distortion_model: plumb_bob
+    distortion_coefficients: [0.0, 0.0, 0.0, 0.0, 0.0]

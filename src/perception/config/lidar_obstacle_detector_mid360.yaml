@@ -1,0 +1,8 @@
+# Overrides for the Livox Mid-360 (use together with lidar_obstacle_detector.yaml: pass config:=...mid360.yaml).
+# The 2D scan made from the point cloud (1 deg bins, band 0.18-1.08 m above the road) has empty bins, so an obstacle
+# is not a run of consecutive beams as with the RPLIDAR: tolerate 3 empty beams inside one cluster.
+lidar_obstacle_detector:
+  ros__parameters:
+    max_beam_gap: 3
+    single_point_range: 22.0       # a far thin cone gives only 1-2 points per frame (1 deg bins); seen in sim: with 8 m cones were detected at 8 m only
+    x_max: 25.0                    # sees further than the RPLIDAR (12 m); 25 m is > 4 s at 5.5 m/s

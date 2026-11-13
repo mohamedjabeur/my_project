@@ -1,0 +1,643 @@
+<?xml version="1.0"?>
+<sdf version="1.7">
+  <world name="shell_eco_track">
+    <physics name="1ms" type="ignored"><max_step_size>0.001</max_step_size><real_time_factor>1.0</real_time_factor></physics>
+    <plugin filename="ignition-gazebo-physics-system" name="ignition::gazebo::systems::Physics"/>
+    <plugin filename="ignition-gazebo-user-commands-system" name="ignition::gazebo::systems::UserCommands"/>
+    <plugin filename="ignition-gazebo-scene-broadcaster-system" name="ignition::gazebo::systems::SceneBroadcaster"/>
+    <plugin filename="ignition-gazebo-sensors-system" name="ignition::gazebo::systems::Sensors"><render_engine>ogre2</render_engine></plugin>
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows><pose>0 0 50 0 0 0</pose>
+      <diffuse>1 1 0.95 1</diffuse><specular>0.3 0.3 0.3 1</specular>
+      <direction>-0.4 0.3 -1</direction>
+    </light>
+    <model name="grass"><static>true</static><pose>108.59 85.68 -0.05 0 0 0</pose><link name="l">
+      <collision name="c"><geometry><box><size>584.3 395.3 0.1</size></box></geometry>
+        <surface><friction><ode><mu>0.8</mu><mu2>0.8</mu2></ode></friction></surface></collision>
+      <visual name="v"><geometry><box><size>584.3 395.3 0.1</size></box></geometry>
+        <material><ambient>0.25 0.45 0.2 1</ambient><diffuse>0.25 0.45 0.2 1</diffuse></material></visual>
+    </link></model>
+    <model name="road"><static>true</static><link name="l">
+      <visual name="v"><geometry><mesh><uri>file:///home/ubuntu/ros2/src/world/track/road.obj</uri></mesh></geometry>
+        <material><ambient>0.2 0.2 0.2 1</ambient><diffuse>0.2 0.2 0.2 1</diffuse><specular>0 0 0 1</specular></material></visual>
+      <collision name="c"><geometry><mesh><uri>file:///home/ubuntu/ros2/src/world/track/road.obj</uri></mesh></geometry></collision>
+    </link></model>
+    <model name="pit_lane"><static>true</static><link name="l">
+      <visual name="v"><geometry><mesh><uri>file:///home/ubuntu/ros2/src/world/track/pit_lane.obj</uri></mesh></geometry>
+        <material><ambient>0.28 0.28 0.3 1</ambient><diffuse>0.28 0.28 0.3 1</diffuse><specular>0 0 0 1</specular></material></visual>
+      <collision name="c"><geometry><mesh><uri>file:///home/ubuntu/ros2/src/world/track/pit_lane.obj</uri></mesh></geometry></collision>
+    </link></model>
+    <model name="edge_lines"><static>true</static><link name="l">
+      <visual name="v"><geometry><mesh><uri>file:///home/ubuntu/ros2/src/world/track/edge_lines.obj</uri></mesh></geometry>
+        <material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse><specular>0 0 0 1</specular></material><plugin filename="ignition-gazebo-label-system" name="ignition::gazebo::systems::Label"><label>1</label></plugin></visual>
+    </link></model>
+    <model name="start_line"><static>true</static><link name="l">
+      <visual name="v"><geometry><mesh><uri>file:///home/ubuntu/ros2/src/world/track/start_line.obj</uri></mesh></geometry>
+        <material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse><specular>0 0 0 1</specular></material><plugin filename="ignition-gazebo-label-system" name="ignition::gazebo::systems::Label"><label>4</label></plugin></visual>
+    </link></model>
+    <model name="stop_lines"><static>true</static><link name="l">
+      <visual name="v"><geometry><mesh><uri>file:///home/ubuntu/ros2/src/world/track/stop_lines.obj</uri></mesh></geometry>
+        <material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse><specular>0 0 0 1</specular></material><plugin filename="ignition-gazebo-label-system" name="ignition::gazebo::systems::Label"><label>3</label></plugin></visual>
+    </link></model>
+    <model name="obstacle_00_cone"><static>true</static><pose>48.220 -7.429 0.02 0 0 -0.1017</pose><link name="l">
+        <visual name="b"><pose>0 0 0.015 0 0 0</pose><geometry><box><size>0.4 0.4 0.03</size></box></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c0"><pose>0 0 0.14 0 0 0</pose><geometry><cylinder><radius>0.14</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c1"><pose>0 0 0.36 0 0 0</pose><geometry><cylinder><radius>0.1</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <visual name="c2"><pose>0 0 0.585 0 0 0</pose><geometry><cylinder><radius>0.06</radius><length>0.23</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.35 0 0 0</pose><geometry><cylinder><radius>0.12</radius><length>0.7</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_01_box"><static>true</static><pose>60.857 -12.072 0.02 0 0 -0.0762</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><box><size>1.0 1.0 1.0</size></box></geometry>
+        <material><ambient>0.1 0.2 0.85 1</ambient><diffuse>0.1 0.2 0.85 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><box><size>1.0 1.0 1.0</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_02_wall"><static>true</static><pose>73.058 -9.347 0.02 0 0 -0.0526</pose><link name="l">
+        <visual name="v"><pose>0 0 0.4 0 0 0</pose><geometry><box><size>4.0 0.4 0.8</size></box></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.4 0 0 0</pose><geometry><box><size>4.0 0.4 0.8</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_03_cone"><static>true</static><pose>82.890 -13.290 0.02 0 0 -0.0375</pose><link name="l">
+        <visual name="b"><pose>0 0 0.015 0 0 0</pose><geometry><box><size>0.4 0.4 0.03</size></box></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c0"><pose>0 0 0.14 0 0 0</pose><geometry><cylinder><radius>0.14</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c1"><pose>0 0 0.36 0 0 0</pose><geometry><cylinder><radius>0.1</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <visual name="c2"><pose>0 0 0.585 0 0 0</pose><geometry><cylinder><radius>0.06</radius><length>0.23</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.35 0 0 0</pose><geometry><cylinder><radius>0.12</radius><length>0.7</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_04_cone"><static>true</static><pose>91.989 -10.055 0.02 0 0 -0.0213</pose><link name="l">
+        <visual name="b"><pose>0 0 0.015 0 0 0</pose><geometry><box><size>0.4 0.4 0.03</size></box></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c0"><pose>0 0 0.14 0 0 0</pose><geometry><cylinder><radius>0.14</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c1"><pose>0 0 0.36 0 0 0</pose><geometry><cylinder><radius>0.1</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <visual name="c2"><pose>0 0 0.585 0 0 0</pose><geometry><cylinder><radius>0.06</radius><length>0.23</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.35 0 0 0</pose><geometry><cylinder><radius>0.12</radius><length>0.7</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_05_wall"><static>true</static><pose>103.959 -10.216 0.02 0 0 -0.0047</pose><link name="l">
+        <visual name="v"><pose>0 0 0.4 0 0 0</pose><geometry><box><size>4.0 0.4 0.8</size></box></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.4 0 0 0</pose><geometry><box><size>4.0 0.4 0.8</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_06_barrel"><static>true</static><pose>114.969 -13.676 0.02 0 0 0.0110</pose><link name="l">
+        <visual name="v"><pose>0 0 0.45 0 0 0</pose><geometry><cylinder><radius>0.3</radius><length>0.9</length></cylinder></geometry>
+        <material><ambient>0.85 0.1 0.1 1</ambient><diffuse>0.85 0.1 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.45 0 0 0</pose><geometry><cylinder><radius>0.3</radius><length>0.9</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_07_box"><static>true</static><pose>127.891 -9.897 0.02 0 0 0.0319</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><box><size>1.0 1.0 1.0</size></box></geometry>
+        <material><ambient>0.1 0.7 0.2 1</ambient><diffuse>0.1 0.7 0.2 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><box><size>1.0 1.0 1.0</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_08_person"><static>true</static><pose>159.745 -8.066 0.02 0 0 0.0834</pose><link name="l">
+        <visual name="v"><pose>0 0 0.85 0 0 0</pose><geometry><cylinder><radius>0.2</radius><length>1.7</length></cylinder></geometry>
+        <material><ambient>0.1 0.7 0.2 1</ambient><diffuse>0.1 0.7 0.2 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.85 0 0 0</pose><geometry><cylinder><radius>0.2</radius><length>1.7</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_09_bigbox"><static>true</static><pose>171.646 -6.924 0.02 0 0 0.1086</pose><link name="l">
+        <visual name="v"><pose>0 0 0.6 0 0 0</pose><geometry><box><size>2.0 1.0 1.2</size></box></geometry>
+        <material><ambient>0.95 0.8 0.1 1</ambient><diffuse>0.95 0.8 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.6 0 0 0</pose><geometry><box><size>2.0 1.0 1.2</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_10_person"><static>true</static><pose>183.507 -5.474 0.02 0 0 0.1374</pose><link name="l">
+        <visual name="v"><pose>0 0 0.85 0 0 0</pose><geometry><cylinder><radius>0.2</radius><length>1.7</length></cylinder></geometry>
+        <material><ambient>0.85 0.1 0.1 1</ambient><diffuse>0.85 0.1 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.85 0 0 0</pose><geometry><cylinder><radius>0.2</radius><length>1.7</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_11_person"><static>true</static><pose>192.929 -7.605 0.02 0 0 0.1619</pose><link name="l">
+        <visual name="v"><pose>0 0 0.85 0 0 0</pose><geometry><cylinder><radius>0.2</radius><length>1.7</length></cylinder></geometry>
+        <material><ambient>0.1 0.7 0.2 1</ambient><diffuse>0.1 0.7 0.2 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.85 0 0 0</pose><geometry><cylinder><radius>0.2</radius><length>1.7</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_12_cone"><static>true</static><pose>204.803 -5.447 0.02 0 0 0.2011</pose><link name="l">
+        <visual name="b"><pose>0 0 0.015 0 0 0</pose><geometry><box><size>0.4 0.4 0.03</size></box></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c0"><pose>0 0 0.14 0 0 0</pose><geometry><cylinder><radius>0.14</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c1"><pose>0 0 0.36 0 0 0</pose><geometry><cylinder><radius>0.1</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <visual name="c2"><pose>0 0 0.585 0 0 0</pose><geometry><cylinder><radius>0.06</radius><length>0.23</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.35 0 0 0</pose><geometry><cylinder><radius>0.12</radius><length>0.7</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_13_cone"><static>true</static><pose>217.558 -2.518 0.02 0 0 0.2516</pose><link name="l">
+        <visual name="b"><pose>0 0 0.015 0 0 0</pose><geometry><box><size>0.4 0.4 0.03</size></box></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c0"><pose>0 0 0.14 0 0 0</pose><geometry><cylinder><radius>0.14</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c1"><pose>0 0 0.36 0 0 0</pose><geometry><cylinder><radius>0.1</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <visual name="c2"><pose>0 0 0.585 0 0 0</pose><geometry><cylinder><radius>0.06</radius><length>0.23</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.35 0 0 0</pose><geometry><cylinder><radius>0.12</radius><length>0.7</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_14_person"><static>true</static><pose>230.147 1.193 0.02 0 0 0.3248</pose><link name="l">
+        <visual name="v"><pose>0 0 0.85 0 0 0</pose><geometry><cylinder><radius>0.2</radius><length>1.7</length></cylinder></geometry>
+        <material><ambient>0.85 0.1 0.1 1</ambient><diffuse>0.85 0.1 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.85 0 0 0</pose><geometry><cylinder><radius>0.2</radius><length>1.7</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_15_person"><static>true</static><pose>238.282 7.961 0.02 0 0 0.3954</pose><link name="l">
+        <visual name="v"><pose>0 0 0.85 0 0 0</pose><geometry><cylinder><radius>0.2</radius><length>1.7</length></cylinder></geometry>
+        <material><ambient>0.1 0.7 0.2 1</ambient><diffuse>0.1 0.7 0.2 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.85 0 0 0</pose><geometry><cylinder><radius>0.2</radius><length>1.7</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_16_barrel"><static>true</static><pose>248.828 9.043 0.02 0 0 0.4885</pose><link name="l">
+        <visual name="v"><pose>0 0 0.45 0 0 0</pose><geometry><cylinder><radius>0.3</radius><length>0.9</length></cylinder></geometry>
+        <material><ambient>0.85 0.1 0.1 1</ambient><diffuse>0.85 0.1 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.45 0 0 0</pose><geometry><cylinder><radius>0.3</radius><length>0.9</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_17_cone"><static>true</static><pose>258.015 18.871 0.02 0 0 0.6229</pose><link name="l">
+        <visual name="b"><pose>0 0 0.015 0 0 0</pose><geometry><box><size>0.4 0.4 0.03</size></box></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c0"><pose>0 0 0.14 0 0 0</pose><geometry><cylinder><radius>0.14</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c1"><pose>0 0 0.36 0 0 0</pose><geometry><cylinder><radius>0.1</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <visual name="c2"><pose>0 0 0.585 0 0 0</pose><geometry><cylinder><radius>0.06</radius><length>0.23</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.35 0 0 0</pose><geometry><cylinder><radius>0.12</radius><length>0.7</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_18_barrel"><static>true</static><pose>269.532 23.698 0.02 0 0 0.7353</pose><link name="l">
+        <visual name="v"><pose>0 0 0.45 0 0 0</pose><geometry><cylinder><radius>0.3</radius><length>0.9</length></cylinder></geometry>
+        <material><ambient>0.1 0.2 0.85 1</ambient><diffuse>0.1 0.2 0.85 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.45 0 0 0</pose><geometry><cylinder><radius>0.3</radius><length>0.9</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_19_wall"><static>true</static><pose>273.512 32.497 0.02 0 0 0.8132</pose><link name="l">
+        <visual name="v"><pose>0 0 0.4 0 0 0</pose><geometry><box><size>4.0 0.4 0.8</size></box></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.4 0 0 0</pose><geometry><box><size>4.0 0.4 0.8</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_20_person"><static>true</static><pose>294.785 56.527 0.02 0 0 1.1046</pose><link name="l">
+        <visual name="v"><pose>0 0 0.85 0 0 0</pose><geometry><cylinder><radius>0.2</radius><length>1.7</length></cylinder></geometry>
+        <material><ambient>0.95 0.8 0.1 1</ambient><diffuse>0.95 0.8 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.85 0 0 0</pose><geometry><cylinder><radius>0.2</radius><length>1.7</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_21_bigbox"><static>true</static><pose>295.551 67.080 0.02 0 0 1.2232</pose><link name="l">
+        <visual name="v"><pose>0 0 0.6 0 0 0</pose><geometry><box><size>2.0 1.0 1.2</size></box></geometry>
+        <material><ambient>0.95 0.8 0.1 1</ambient><diffuse>0.95 0.8 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.6 0 0 0</pose><geometry><box><size>2.0 1.0 1.2</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_22_wall"><static>true</static><pose>301.407 74.762 0.02 0 0 1.3634</pose><link name="l">
+        <visual name="v"><pose>0 0 0.4 0 0 0</pose><geometry><box><size>4.0 0.4 0.8</size></box></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.4 0 0 0</pose><geometry><box><size>4.0 0.4 0.8</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_23_bigbox"><static>true</static><pose>302.461 87.112 0.02 0 0 1.6093</pose><link name="l">
+        <visual name="v"><pose>0 0 0.6 0 0 0</pose><geometry><box><size>2.0 1.0 1.2</size></box></geometry>
+        <material><ambient>0.1 0.7 0.2 1</ambient><diffuse>0.1 0.7 0.2 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.6 0 0 0</pose><geometry><box><size>2.0 1.0 1.2</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_24_barrel"><static>true</static><pose>296.831 100.386 0.02 0 0 1.8341</pose><link name="l">
+        <visual name="v"><pose>0 0 0.45 0 0 0</pose><geometry><cylinder><radius>0.3</radius><length>0.9</length></cylinder></geometry>
+        <material><ambient>0.1 0.2 0.85 1</ambient><diffuse>0.1 0.2 0.85 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.45 0 0 0</pose><geometry><cylinder><radius>0.3</radius><length>0.9</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_25_bigbox"><static>true</static><pose>295.286 114.705 0.02 0 0 2.0063</pose><link name="l">
+        <visual name="v"><pose>0 0 0.6 0 0 0</pose><geometry><box><size>2.0 1.0 1.2</size></box></geometry>
+        <material><ambient>0.1 0.2 0.85 1</ambient><diffuse>0.1 0.2 0.85 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.6 0 0 0</pose><geometry><box><size>2.0 1.0 1.2</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_26_box"><static>true</static><pose>287.993 121.028 0.02 0 0 2.1067</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><box><size>1.0 1.0 1.0</size></box></geometry>
+        <material><ambient>0.85 0.1 0.1 1</ambient><diffuse>0.85 0.1 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><box><size>1.0 1.0 1.0</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_27_bigbox"><static>true</static><pose>285.329 131.277 0.02 0 0 2.2170</pose><link name="l">
+        <visual name="v"><pose>0 0 0.6 0 0 0</pose><geometry><box><size>2.0 1.0 1.2</size></box></geometry>
+        <material><ambient>0.1 0.7 0.2 1</ambient><diffuse>0.1 0.7 0.2 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.6 0 0 0</pose><geometry><box><size>2.0 1.0 1.2</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_28_bigbox"><static>true</static><pose>274.827 138.028 0.02 0 0 2.3587</pose><link name="l">
+        <visual name="v"><pose>0 0 0.6 0 0 0</pose><geometry><box><size>2.0 1.0 1.2</size></box></geometry>
+        <material><ambient>0.95 0.8 0.1 1</ambient><diffuse>0.95 0.8 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.6 0 0 0</pose><geometry><box><size>2.0 1.0 1.2</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_29_cone"><static>true</static><pose>266.692 145.018 0.02 0 0 2.5093</pose><link name="l">
+        <visual name="b"><pose>0 0 0.015 0 0 0</pose><geometry><box><size>0.4 0.4 0.03</size></box></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c0"><pose>0 0 0.14 0 0 0</pose><geometry><cylinder><radius>0.14</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c1"><pose>0 0 0.36 0 0 0</pose><geometry><cylinder><radius>0.1</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <visual name="c2"><pose>0 0 0.585 0 0 0</pose><geometry><cylinder><radius>0.06</radius><length>0.23</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.35 0 0 0</pose><geometry><cylinder><radius>0.12</radius><length>0.7</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_30_wall"><static>true</static><pose>257.358 154.656 0.02 0 0 2.6810</pose><link name="l">
+        <visual name="v"><pose>0 0 0.4 0 0 0</pose><geometry><box><size>4.0 0.4 0.8</size></box></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.4 0 0 0</pose><geometry><box><size>4.0 0.4 0.8</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_31_barrel"><static>true</static><pose>227.075 162.106 0.02 0 0 2.8746</pose><link name="l">
+        <visual name="v"><pose>0 0 0.45 0 0 0</pose><geometry><cylinder><radius>0.3</radius><length>0.9</length></cylinder></geometry>
+        <material><ambient>0.85 0.1 0.1 1</ambient><diffuse>0.85 0.1 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.45 0 0 0</pose><geometry><cylinder><radius>0.3</radius><length>0.9</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_32_wall"><static>true</static><pose>213.573 165.338 0.02 0 0 2.9395</pose><link name="l">
+        <visual name="v"><pose>0 0 0.4 0 0 0</pose><geometry><box><size>4.0 0.4 0.8</size></box></geometry>
+        <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.4 0 0 0</pose><geometry><box><size>4.0 0.4 0.8</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_33_barrel"><static>true</static><pose>199.895 167.666 0.02 0 0 3.0096</pose><link name="l">
+        <visual name="v"><pose>0 0 0.45 0 0 0</pose><geometry><cylinder><radius>0.3</radius><length>0.9</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.45 0 0 0</pose><geometry><cylinder><radius>0.3</radius><length>0.9</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_34_box"><static>true</static><pose>187.273 172.368 0.02 0 0 3.0921</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><box><size>1.0 1.0 1.0</size></box></geometry>
+        <material><ambient>0.95 0.8 0.1 1</ambient><diffuse>0.95 0.8 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><box><size>1.0 1.0 1.0</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_35_wall"><static>true</static><pose>177.118 172.440 0.02 0 0 -3.0999</pose><link name="l">
+        <visual name="v"><pose>0 0 0.4 0 0 0</pose><geometry><box><size>4.0 0.4 0.8</size></box></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.4 0 0 0</pose><geometry><box><size>4.0 0.4 0.8</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_36_cone"><static>true</static><pose>163.806 170.202 0.02 0 0 -2.7795</pose><link name="l">
+        <visual name="b"><pose>0 0 0.015 0 0 0</pose><geometry><box><size>0.4 0.4 0.03</size></box></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c0"><pose>0 0 0.14 0 0 0</pose><geometry><cylinder><radius>0.14</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c1"><pose>0 0 0.36 0 0 0</pose><geometry><cylinder><radius>0.1</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <visual name="c2"><pose>0 0 0.585 0 0 0</pose><geometry><cylinder><radius>0.06</radius><length>0.23</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.35 0 0 0</pose><geometry><cylinder><radius>0.12</radius><length>0.7</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_37_box"><static>true</static><pose>155.245 161.099 0.02 0 0 -2.4653</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><box><size>1.0 1.0 1.0</size></box></geometry>
+        <material><ambient>0.85 0.1 0.1 1</ambient><diffuse>0.85 0.1 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><box><size>1.0 1.0 1.0</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_38_barrel"><static>true</static><pose>145.481 151.514 0.02 0 0 -2.2937</pose><link name="l">
+        <visual name="v"><pose>0 0 0.45 0 0 0</pose><geometry><cylinder><radius>0.3</radius><length>0.9</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.45 0 0 0</pose><geometry><cylinder><radius>0.3</radius><length>0.9</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_39_cone"><static>true</static><pose>136.388 146.111 0.02 0 0 -2.2533</pose><link name="l">
+        <visual name="b"><pose>0 0 0.015 0 0 0</pose><geometry><box><size>0.4 0.4 0.03</size></box></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c0"><pose>0 0 0.14 0 0 0</pose><geometry><cylinder><radius>0.14</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c1"><pose>0 0 0.36 0 0 0</pose><geometry><cylinder><radius>0.1</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <visual name="c2"><pose>0 0 0.585 0 0 0</pose><geometry><cylinder><radius>0.06</radius><length>0.23</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.35 0 0 0</pose><geometry><cylinder><radius>0.12</radius><length>0.7</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_40_cone"><static>true</static><pose>132.723 136.149 0.02 0 0 -2.2777</pose><link name="l">
+        <visual name="b"><pose>0 0 0.015 0 0 0</pose><geometry><box><size>0.4 0.4 0.03</size></box></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c0"><pose>0 0 0.14 0 0 0</pose><geometry><cylinder><radius>0.14</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c1"><pose>0 0 0.36 0 0 0</pose><geometry><cylinder><radius>0.1</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <visual name="c2"><pose>0 0 0.585 0 0 0</pose><geometry><cylinder><radius>0.06</radius><length>0.23</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.35 0 0 0</pose><geometry><cylinder><radius>0.12</radius><length>0.7</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_41_box"><static>true</static><pose>120.379 129.026 0.02 0 0 -2.5461</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><box><size>1.0 1.0 1.0</size></box></geometry>
+        <material><ambient>0.1 0.2 0.85 1</ambient><diffuse>0.1 0.2 0.85 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><box><size>1.0 1.0 1.0</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_42_box"><static>true</static><pose>96.523 140.334 0.02 0 0 2.1679</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><box><size>1.0 1.0 1.0</size></box></geometry>
+        <material><ambient>0.95 0.8 0.1 1</ambient><diffuse>0.95 0.8 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><box><size>1.0 1.0 1.0</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_43_person"><static>true</static><pose>87.025 148.406 0.02 0 0 2.1585</pose><link name="l">
+        <visual name="v"><pose>0 0 0.85 0 0 0</pose><geometry><cylinder><radius>0.2</radius><length>1.7</length></cylinder></geometry>
+        <material><ambient>0.1 0.7 0.2 1</ambient><diffuse>0.1 0.7 0.2 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.85 0 0 0</pose><geometry><cylinder><radius>0.2</radius><length>1.7</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_44_box"><static>true</static><pose>82.753 160.184 0.02 0 0 2.2657</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><box><size>1.0 1.0 1.0</size></box></geometry>
+        <material><ambient>0.85 0.1 0.1 1</ambient><diffuse>0.85 0.1 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><box><size>1.0 1.0 1.0</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_45_cone"><static>true</static><pose>73.255 164.739 0.02 0 0 2.4725</pose><link name="l">
+        <visual name="b"><pose>0 0 0.015 0 0 0</pose><geometry><box><size>0.4 0.4 0.03</size></box></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c0"><pose>0 0 0.14 0 0 0</pose><geometry><cylinder><radius>0.14</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c1"><pose>0 0 0.36 0 0 0</pose><geometry><cylinder><radius>0.1</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <visual name="c2"><pose>0 0 0.585 0 0 0</pose><geometry><cylinder><radius>0.06</radius><length>0.23</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.35 0 0 0</pose><geometry><cylinder><radius>0.12</radius><length>0.7</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_46_barrel"><static>true</static><pose>64.516 173.460 0.02 0 0 2.7539</pose><link name="l">
+        <visual name="v"><pose>0 0 0.45 0 0 0</pose><geometry><cylinder><radius>0.3</radius><length>0.9</length></cylinder></geometry>
+        <material><ambient>0.1 0.2 0.85 1</ambient><diffuse>0.1 0.2 0.85 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.45 0 0 0</pose><geometry><cylinder><radius>0.3</radius><length>0.9</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_47_cone"><static>true</static><pose>55.978 176.632 0.02 0 0 2.8166</pose><link name="l">
+        <visual name="b"><pose>0 0 0.015 0 0 0</pose><geometry><box><size>0.4 0.4 0.03</size></box></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c0"><pose>0 0 0.14 0 0 0</pose><geometry><cylinder><radius>0.14</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c1"><pose>0 0 0.36 0 0 0</pose><geometry><cylinder><radius>0.1</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <visual name="c2"><pose>0 0 0.585 0 0 0</pose><geometry><cylinder><radius>0.06</radius><length>0.23</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.35 0 0 0</pose><geometry><cylinder><radius>0.12</radius><length>0.7</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_48_person"><static>true</static><pose>46.306 179.559 0.02 0 0 2.8780</pose><link name="l">
+        <visual name="v"><pose>0 0 0.85 0 0 0</pose><geometry><cylinder><radius>0.2</radius><length>1.7</length></cylinder></geometry>
+        <material><ambient>0.95 0.8 0.1 1</ambient><diffuse>0.95 0.8 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.85 0 0 0</pose><geometry><cylinder><radius>0.2</radius><length>1.7</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_49_bigbox"><static>true</static><pose>36.736 178.273 0.02 0 0 2.9307</pose><link name="l">
+        <visual name="v"><pose>0 0 0.6 0 0 0</pose><geometry><box><size>2.0 1.0 1.2</size></box></geometry>
+        <material><ambient>0.1 0.2 0.85 1</ambient><diffuse>0.1 0.2 0.85 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.6 0 0 0</pose><geometry><box><size>2.0 1.0 1.2</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_50_bigbox"><static>true</static><pose>27.526 183.509 0.02 0 0 2.9927</pose><link name="l">
+        <visual name="v"><pose>0 0 0.6 0 0 0</pose><geometry><box><size>2.0 1.0 1.2</size></box></geometry>
+        <material><ambient>0.1 0.2 0.85 1</ambient><diffuse>0.1 0.2 0.85 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.6 0 0 0</pose><geometry><box><size>2.0 1.0 1.2</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_51_bigbox"><static>true</static><pose>16.212 181.260 0.02 0 0 3.0693</pose><link name="l">
+        <visual name="v"><pose>0 0 0.6 0 0 0</pose><geometry><box><size>2.0 1.0 1.2</size></box></geometry>
+        <material><ambient>0.1 0.7 0.2 1</ambient><diffuse>0.1 0.7 0.2 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.6 0 0 0</pose><geometry><box><size>2.0 1.0 1.2</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_52_bigbox"><static>true</static><pose>6.327 185.080 0.02 0 0 -3.1303</pose><link name="l">
+        <visual name="v"><pose>0 0 0.6 0 0 0</pose><geometry><box><size>2.0 1.0 1.2</size></box></geometry>
+        <material><ambient>0.1 0.7 0.2 1</ambient><diffuse>0.1 0.7 0.2 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.6 0 0 0</pose><geometry><box><size>2.0 1.0 1.2</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_53_cone"><static>true</static><pose>-3.423 180.971 0.02 0 0 -3.0233</pose><link name="l">
+        <visual name="b"><pose>0 0 0.015 0 0 0</pose><geometry><box><size>0.4 0.4 0.03</size></box></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c0"><pose>0 0 0.14 0 0 0</pose><geometry><cylinder><radius>0.14</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c1"><pose>0 0 0.36 0 0 0</pose><geometry><cylinder><radius>0.1</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <visual name="c2"><pose>0 0 0.585 0 0 0</pose><geometry><cylinder><radius>0.06</radius><length>0.23</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.35 0 0 0</pose><geometry><cylinder><radius>0.12</radius><length>0.7</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_54_bigbox"><static>true</static><pose>-34.855 175.041 0.02 0 0 -2.7156</pose><link name="l">
+        <visual name="v"><pose>0 0 0.6 0 0 0</pose><geometry><box><size>2.0 1.0 1.2</size></box></geometry>
+        <material><ambient>0.95 0.8 0.1 1</ambient><diffuse>0.95 0.8 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.6 0 0 0</pose><geometry><box><size>2.0 1.0 1.2</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_55_bigbox"><static>true</static><pose>-42.256 167.464 0.02 0 0 -2.6463</pose><link name="l">
+        <visual name="v"><pose>0 0 0.6 0 0 0</pose><geometry><box><size>2.0 1.0 1.2</size></box></geometry>
+        <material><ambient>0.95 0.8 0.1 1</ambient><diffuse>0.95 0.8 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.6 0 0 0</pose><geometry><box><size>2.0 1.0 1.2</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_56_bigbox"><static>true</static><pose>-50.763 162.462 0.02 0 0 -2.5725</pose><link name="l">
+        <visual name="v"><pose>0 0 0.6 0 0 0</pose><geometry><box><size>2.0 1.0 1.2</size></box></geometry>
+        <material><ambient>0.95 0.8 0.1 1</ambient><diffuse>0.95 0.8 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.6 0 0 0</pose><geometry><box><size>2.0 1.0 1.2</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_57_box"><static>true</static><pose>-61.156 155.001 0.02 0 0 -2.4587</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><box><size>1.0 1.0 1.0</size></box></geometry>
+        <material><ambient>0.85 0.1 0.1 1</ambient><diffuse>0.85 0.1 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><box><size>1.0 1.0 1.0</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_58_cone"><static>true</static><pose>-67.708 149.107 0.02 0 0 -2.3545</pose><link name="l">
+        <visual name="b"><pose>0 0 0.015 0 0 0</pose><geometry><box><size>0.4 0.4 0.03</size></box></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c0"><pose>0 0 0.14 0 0 0</pose><geometry><cylinder><radius>0.14</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c1"><pose>0 0 0.36 0 0 0</pose><geometry><cylinder><radius>0.1</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <visual name="c2"><pose>0 0 0.585 0 0 0</pose><geometry><cylinder><radius>0.06</radius><length>0.23</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.35 0 0 0</pose><geometry><cylinder><radius>0.12</radius><length>0.7</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_59_barrel"><static>true</static><pose>-76.096 138.510 0.02 0 0 -2.0984</pose><link name="l">
+        <visual name="v"><pose>0 0 0.45 0 0 0</pose><geometry><cylinder><radius>0.3</radius><length>0.9</length></cylinder></geometry>
+        <material><ambient>0.1 0.2 0.85 1</ambient><diffuse>0.1 0.2 0.85 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.45 0 0 0</pose><geometry><cylinder><radius>0.3</radius><length>0.9</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_60_box"><static>true</static><pose>-83.146 130.667 0.02 0 0 -1.8441</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><box><size>1.0 1.0 1.0</size></box></geometry>
+        <material><ambient>0.95 0.8 0.1 1</ambient><diffuse>0.95 0.8 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><box><size>1.0 1.0 1.0</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_61_box"><static>true</static><pose>-85.211 117.470 0.02 0 0 -1.6237</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><box><size>1.0 1.0 1.0</size></box></geometry>
+        <material><ambient>0.1 0.7 0.2 1</ambient><diffuse>0.1 0.7 0.2 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><box><size>1.0 1.0 1.0</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_62_barrel"><static>true</static><pose>-85.053 106.256 0.02 0 0 -1.4962</pose><link name="l">
+        <visual name="v"><pose>0 0 0.45 0 0 0</pose><geometry><cylinder><radius>0.3</radius><length>0.9</length></cylinder></geometry>
+        <material><ambient>0.85 0.1 0.1 1</ambient><diffuse>0.85 0.1 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.45 0 0 0</pose><geometry><cylinder><radius>0.3</radius><length>0.9</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_63_barrel"><static>true</static><pose>-83.068 92.183 0.02 0 0 -1.3695</pose><link name="l">
+        <visual name="v"><pose>0 0 0.45 0 0 0</pose><geometry><cylinder><radius>0.3</radius><length>0.9</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.45 0 0 0</pose><geometry><cylinder><radius>0.3</radius><length>0.9</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_64_wall"><static>true</static><pose>-80.364 81.368 0.02 0 0 -1.2826</pose><link name="l">
+        <visual name="v"><pose>0 0 0.4 0 0 0</pose><geometry><box><size>4.0 0.4 0.8</size></box></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.4 0 0 0</pose><geometry><box><size>4.0 0.4 0.8</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_65_cone"><static>true</static><pose>-67.132 51.829 0.02 0 0 -1.0131</pose><link name="l">
+        <visual name="b"><pose>0 0 0.015 0 0 0</pose><geometry><box><size>0.4 0.4 0.03</size></box></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c0"><pose>0 0 0.14 0 0 0</pose><geometry><cylinder><radius>0.14</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c1"><pose>0 0 0.36 0 0 0</pose><geometry><cylinder><radius>0.1</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <visual name="c2"><pose>0 0 0.585 0 0 0</pose><geometry><cylinder><radius>0.06</radius><length>0.23</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.35 0 0 0</pose><geometry><cylinder><radius>0.12</radius><length>0.7</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="obstacle_66_wall"><static>true</static><pose>-57.485 43.892 0.02 0 0 -0.9296</pose><link name="l">
+        <visual name="v"><pose>0 0 0.4 0 0 0</pose><geometry><box><size>4.0 0.4 0.8</size></box></geometry>
+        <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.4 0 0 0</pose><geometry><box><size>4.0 0.4 0.8</size></box></geometry></collision>
+    </link></model>
+    <model name="obstacle_67_cone"><static>true</static><pose>-51.296 36.209 0.02 0 0 -0.8544</pose><link name="l">
+        <visual name="b"><pose>0 0 0.015 0 0 0</pose><geometry><box><size>0.4 0.4 0.03</size></box></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c0"><pose>0 0 0.14 0 0 0</pose><geometry><cylinder><radius>0.14</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <visual name="c1"><pose>0 0 0.36 0 0 0</pose><geometry><cylinder><radius>0.1</radius><length>0.22</length></cylinder></geometry>
+        <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <visual name="c2"><pose>0 0 0.585 0 0 0</pose><geometry><cylinder><radius>0.06</radius><length>0.23</length></cylinder></geometry>
+        <material><ambient>1 0.45 0.05 1</ambient><diffuse>1 0.45 0.05 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.35 0 0 0</pose><geometry><cylinder><radius>0.12</radius><length>0.7</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="post_00"><static>true</static><pose>10.010 2.791 0 0 0 0</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry>
+        <material><ambient>0.85 0.1 0.1 1</ambient><diffuse>0.85 0.1 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="post_02"><static>true</static><pose>88.106 -6.206 0 0 0 0</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry>
+        <material><ambient>0.85 0.1 0.1 1</ambient><diffuse>0.85 0.1 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="post_04"><static>true</static><pose>167.308 -3.607 0 0 0 0</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry>
+        <material><ambient>0.85 0.1 0.1 1</ambient><diffuse>0.85 0.1 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="post_05"><static>true</static><pose>208.549 -8.496 0 0 0 0</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry>
+        <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="post_06"><static>true</static><pose>242.911 14.159 0 0 0 0</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry>
+        <material><ambient>0.85 0.1 0.1 1</ambient><diffuse>0.85 0.1 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="post_07"><static>true</static><pose>280.913 29.828 0 0 0 0</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry>
+        <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="post_08"><static>true</static><pose>292.334 69.231 0 0 0 0</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry>
+        <material><ambient>0.85 0.1 0.1 1</ambient><diffuse>0.85 0.1 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="post_09"><static>true</static><pose>301.916 108.407 0 0 0 0</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry>
+        <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="post_10"><static>true</static><pose>271.520 136.020 0 0 0 0</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry>
+        <material><ambient>0.85 0.1 0.1 1</ambient><diffuse>0.85 0.1 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="post_12"><static>true</static><pose>201.322 163.679 0 0 0 0</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry>
+        <material><ambient>0.85 0.1 0.1 1</ambient><diffuse>0.85 0.1 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="post_13"><static>true</static><pose>160.300 172.797 0 0 0 0</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry>
+        <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="post_14"><static>true</static><pose>138.207 136.863 0 0 0 0</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry>
+        <material><ambient>0.85 0.1 0.1 1</ambient><diffuse>0.85 0.1 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="post_15"><static>true</static><pose>105.783 134.497 0 0 0 0</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry>
+        <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="post_16"><static>true</static><pose>74.151 158.893 0 0 0 0</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry>
+        <material><ambient>0.85 0.1 0.1 1</ambient><diffuse>0.85 0.1 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="post_17"><static>true</static><pose>43.284 184.210 0 0 0 0</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry>
+        <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="post_18"><static>true</static><pose>2.627 177.716 0 0 0 0</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry>
+        <material><ambient>0.85 0.1 0.1 1</ambient><diffuse>0.85 0.1 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="post_19"><static>true</static><pose>-38.295 177.581 0 0 0 0</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry>
+        <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="post_20"><static>true</static><pose>-65.052 146.460 0 0 0 0</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry>
+        <material><ambient>0.85 0.1 0.1 1</ambient><diffuse>0.85 0.1 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="post_21"><static>true</static><pose>-89.065 114.459 0 0 0 0</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry>
+        <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="post_22"><static>true</static><pose>-71.334 77.062 0 0 0 0</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry>
+        <material><ambient>0.85 0.1 0.1 1</ambient><diffuse>0.85 0.1 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="post_23"><static>true</static><pose>-61.401 37.077 0 0 0 0</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry>
+        <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="post_24"><static>true</static><pose>-24.845 17.998 0 0 0 0</pose><link name="l">
+        <visual name="v"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry>
+        <material><ambient>0.85 0.1 0.1 1</ambient><diffuse>0.85 0.1 0.1 1</diffuse></material></visual>
+        <collision name="c"><pose>0 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.25</radius><length>1.0</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="stop_sign_0150"><static>true</static><pose>148.218 -15.382 0 0 0 0.0627</pose><link name="l">
+        <visual name="pole"><pose>0.04 0 1.0 0 0 0</pose><geometry><cylinder><radius>0.03</radius><length>2.0</length></cylinder></geometry>
+          <material><ambient>0.6 0.6 0.62 1</ambient><diffuse>0.6 0.6 0.62 1</diffuse></material></visual>
+        <visual name="face"><pose>0 0 2.0 0 0 0</pose><geometry><mesh><uri>file:///home/ubuntu/ros2/src/world/track/stop_front.obj</uri></mesh></geometry>
+          <material><diffuse>1 1 1 1</diffuse><pbr><metal><albedo_map>file:///home/ubuntu/ros2/src/world/track/stop_sign.png</albedo_map><metalness>0</metalness><roughness>0.6</roughness></metal></pbr></material><plugin filename="ignition-gazebo-label-system" name="ignition::gazebo::systems::Label"><label>5</label></plugin></visual>
+        <visual name="back"><pose>0.01 0 2.0 0 0 0</pose><geometry><mesh><uri>file:///home/ubuntu/ros2/src/world/track/stop_back.obj</uri></mesh></geometry>
+          <material><ambient>0.7 0.7 0.7 1</ambient><diffuse>0.7 0.7 0.7 1</diffuse></material></visual>
+        <collision name="c"><pose>0.04 0 1.0 0 0 0</pose><geometry><cylinder><radius>0.05</radius><length>2.0</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="stop_sign_0300"><static>true</static><pose>286.921 38.402 0 0 0 0.9266</pose><link name="l">
+        <visual name="pole"><pose>0.04 0 1.0 0 0 0</pose><geometry><cylinder><radius>0.03</radius><length>2.0</length></cylinder></geometry>
+          <material><ambient>0.6 0.6 0.62 1</ambient><diffuse>0.6 0.6 0.62 1</diffuse></material></visual>
+        <visual name="face"><pose>0 0 2.0 0 0 0</pose><geometry><mesh><uri>file:///home/ubuntu/ros2/src/world/track/stop_front.obj</uri></mesh></geometry>
+          <material><diffuse>1 1 1 1</diffuse><pbr><metal><albedo_map>file:///home/ubuntu/ros2/src/world/track/stop_sign.png</albedo_map><metalness>0</metalness><roughness>0.6</roughness></metal></pbr></material><plugin filename="ignition-gazebo-label-system" name="ignition::gazebo::systems::Label"><label>5</label></plugin></visual>
+        <visual name="back"><pose>0.01 0 2.0 0 0 0</pose><geometry><mesh><uri>file:///home/ubuntu/ros2/src/world/track/stop_back.obj</uri></mesh></geometry>
+          <material><ambient>0.7 0.7 0.7 1</ambient><diffuse>0.7 0.7 0.7 1</diffuse></material></visual>
+        <collision name="c"><pose>0.04 0 1.0 0 0 0</pose><geometry><cylinder><radius>0.05</radius><length>2.0</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="stop_sign_0450"><static>true</static><pose>242.465 164.061 0 0 0 2.8023</pose><link name="l">
+        <visual name="pole"><pose>0.04 0 1.0 0 0 0</pose><geometry><cylinder><radius>0.03</radius><length>2.0</length></cylinder></geometry>
+          <material><ambient>0.6 0.6 0.62 1</ambient><diffuse>0.6 0.6 0.62 1</diffuse></material></visual>
+        <visual name="face"><pose>0 0 2.0 0 0 0</pose><geometry><mesh><uri>file:///home/ubuntu/ros2/src/world/track/stop_front.obj</uri></mesh></geometry>
+          <material><diffuse>1 1 1 1</diffuse><pbr><metal><albedo_map>file:///home/ubuntu/ros2/src/world/track/stop_sign.png</albedo_map><metalness>0</metalness><roughness>0.6</roughness></metal></pbr></material><plugin filename="ignition-gazebo-label-system" name="ignition::gazebo::systems::Label"><label>5</label></plugin></visual>
+        <visual name="back"><pose>0.01 0 2.0 0 0 0</pose><geometry><mesh><uri>file:///home/ubuntu/ros2/src/world/track/stop_back.obj</uri></mesh></geometry>
+          <material><ambient>0.7 0.7 0.7 1</ambient><diffuse>0.7 0.7 0.7 1</diffuse></material></visual>
+        <collision name="c"><pose>0.04 0 1.0 0 0 0</pose><geometry><cylinder><radius>0.05</radius><length>2.0</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="stop_sign_0600"><static>true</static><pose>111.361 129.699 0 0 0 2.8567</pose><link name="l">
+        <visual name="pole"><pose>0.04 0 1.0 0 0 0</pose><geometry><cylinder><radius>0.03</radius><length>2.0</length></cylinder></geometry>
+          <material><ambient>0.6 0.6 0.62 1</ambient><diffuse>0.6 0.6 0.62 1</diffuse></material></visual>
+        <visual name="face"><pose>0 0 2.0 0 0 0</pose><geometry><mesh><uri>file:///home/ubuntu/ros2/src/world/track/stop_front.obj</uri></mesh></geometry>
+          <material><diffuse>1 1 1 1</diffuse><pbr><metal><albedo_map>file:///home/ubuntu/ros2/src/world/track/stop_sign.png</albedo_map><metalness>0</metalness><roughness>0.6</roughness></metal></pbr></material><plugin filename="ignition-gazebo-label-system" name="ignition::gazebo::systems::Label"><label>5</label></plugin></visual>
+        <visual name="back"><pose>0.01 0 2.0 0 0 0</pose><geometry><mesh><uri>file:///home/ubuntu/ros2/src/world/track/stop_back.obj</uri></mesh></geometry>
+          <material><ambient>0.7 0.7 0.7 1</ambient><diffuse>0.7 0.7 0.7 1</diffuse></material></visual>
+        <collision name="c"><pose>0.04 0 1.0 0 0 0</pose><geometry><cylinder><radius>0.05</radius><length>2.0</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="stop_sign_0750"><static>true</static><pose>-18.645 184.306 0 0 0 -2.8526</pose><link name="l">
+        <visual name="pole"><pose>0.04 0 1.0 0 0 0</pose><geometry><cylinder><radius>0.03</radius><length>2.0</length></cylinder></geometry>
+          <material><ambient>0.6 0.6 0.62 1</ambient><diffuse>0.6 0.6 0.62 1</diffuse></material></visual>
+        <visual name="face"><pose>0 0 2.0 0 0 0</pose><geometry><mesh><uri>file:///home/ubuntu/ros2/src/world/track/stop_front.obj</uri></mesh></geometry>
+          <material><diffuse>1 1 1 1</diffuse><pbr><metal><albedo_map>file:///home/ubuntu/ros2/src/world/track/stop_sign.png</albedo_map><metalness>0</metalness><roughness>0.6</roughness></metal></pbr></material><plugin filename="ignition-gazebo-label-system" name="ignition::gazebo::systems::Label"><label>5</label></plugin></visual>
+        <visual name="back"><pose>0.01 0 2.0 0 0 0</pose><geometry><mesh><uri>file:///home/ubuntu/ros2/src/world/track/stop_back.obj</uri></mesh></geometry>
+          <material><ambient>0.7 0.7 0.7 1</ambient><diffuse>0.7 0.7 0.7 1</diffuse></material></visual>
+        <collision name="c"><pose>0.04 0 1.0 0 0 0</pose><geometry><cylinder><radius>0.05</radius><length>2.0</length></cylinder></geometry></collision>
+    </link></model>
+    <model name="stop_sign_0900"><static>true</static><pose>-77.057 64.000 0 0 0 -1.1453</pose><link name="l">
+        <visual name="pole"><pose>0.04 0 1.0 0 0 0</pose><geometry><cylinder><radius>0.03</radius><length>2.0</length></cylinder></geometry>
+          <material><ambient>0.6 0.6 0.62 1</ambient><diffuse>0.6 0.6 0.62 1</diffuse></material></visual>
+        <visual name="face"><pose>0 0 2.0 0 0 0</pose><geometry><mesh><uri>file:///home/ubuntu/ros2/src/world/track/stop_front.obj</uri></mesh></geometry>
+          <material><diffuse>1 1 1 1</diffuse><pbr><metal><albedo_map>file:///home/ubuntu/ros2/src/world/track/stop_sign.png</albedo_map><metalness>0</metalness><roughness>0.6</roughness></metal></pbr></material><plugin filename="ignition-gazebo-label-system" name="ignition::gazebo::systems::Label"><label>5</label></plugin></visual>
+        <visual name="back"><pose>0.01 0 2.0 0 0 0</pose><geometry><mesh><uri>file:///home/ubuntu/ros2/src/world/track/stop_back.obj</uri></mesh></geometry>
+          <material><ambient>0.7 0.7 0.7 1</ambient><diffuse>0.7 0.7 0.7 1</diffuse></material></visual>
+        <collision name="c"><pose>0.04 0 1.0 0 0 0</pose><geometry><cylinder><radius>0.05</radius><length>2.0</length></cylinder></geometry></collision>
+    </link></model>
+  </world>
+</sdf>

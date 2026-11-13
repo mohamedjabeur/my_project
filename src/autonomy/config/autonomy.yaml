@@ -1,0 +1,37 @@
+fusion_node:
+  ros__parameters:
+    wheelbase: 1.704
+    rear_wheel_radius: 0.18
+    speed_source: odom      # odom | encoder (/wheel_feedback ticks)
+    # EKF noise: process (per s) and measurement variances
+    q_offset: 0.02
+    q_heading: 0.01
+    q_speed: 0.5
+    r_offset: 0.04          # camera lane offset (m^2)
+    r_heading: 0.01         # camera lane heading (rad^2)
+    r_speed: 0.01           # encoder speed (m/s)^2
+    gate: 9.0
+    # controller
+    # speed range 10..20 km/h: 20 km/h (5.56 m/s) on a free road, 10 km/h (2.78 m/s) near obstacles / in corners.
+    # Below 10 km/h only to STOP (goal, stop line, both lanes blocked).
+    v_cruise: 5.56       # 20 km/h
+    v_curve: 2.78        # 10 km/h: full-lock corner speed AND creep speed when the camera lost the lane
+    k_stanley: 0.6          # lower: camera delay (~0.3-0.5 s) + steer limit 0.21 made 1.0 oscillate +-2 m
+    k_soft: 1.0
+    accel: 1.5            # m/s^2: smooth speed-up (10 -> 20 km/h in ~1.9 s) once the road is free; slowing down is never limited
+    decel: 3.0            # MEASURED in sim: rear-wheel-only braking ~3-3.5 m/s^2 (stops in 4.5-5 m from 5.5 m/s); raise only with 4-wheel brakes
+    obstacle_margin: 3.0    # m kept in front of an obstacle we cannot get around (both lanes blocked)
+    # obstacle avoidance: slow down, take the free lane, speed up again (autonomy/avoidance.py)
+    v_avoid: 2.78           # 10 km/h while an obstacle is on the road ahead or a lane change is under way
+    lane_shift: 3.4         # m between the lane centres (road_width / 2)
+    lane_change_slope: 0.3  # m lateral per m forward (17 deg): a full lane change takes ~11 m, radius stays > 8 m
+    look_ahead: 14.0        # m: obstacle on the planned path closer than this -> change lane
+    slow_dist: 18.0         # m: obstacles on the road closer than this -> v_avoid
+    lidar_timeout: 1.0      # s without lidar result -> creep
+    stop_margin: 0.5
+    stop_hold: 3.0
+    stop_ignore: 6.0
+    stop_trigger: 1.5
+    camera_delay: 0.45      # s, picture -> detector output (measured: render + 0.22 s processing); measurements are moved forward by it
+    sensor_timeout: 0.35    # s without camera -> lane_valid = false; without encoder -> command 0
+    control_rate: 20.0

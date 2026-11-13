@@ -1,0 +1,24 @@
+line_detector:
+  ros__parameters:
+    image_topic: /camera/image_raw
+    # camera = enimia.urdf (800x450, HFOV 100 deg, 0.732 m high, 10 deg down, x = 0.18 m in base_footprint)
+    fx: 335.65
+    fy: 335.65
+    cx: 400.0
+    cy: 225.0
+    camera_height: 0.732
+    camera_pitch: 0.1745
+    camera_x: 0.18
+    x_min: 1.0                        # ground points used (m ahead of base_footprint)
+    x_max: 15.0
+    lane_width: 3.25                  # half the distance between the edge-line centres
+    road_width: 6.75                  # distance between the two edge-line centres (lines sit 0.125 m inside the 7 m road); track has no centre line -> drive in the right lane (0 = use a centre line)
+    front_x: 1.445
+    pixel_stride: 2
+    # classical paint detection: white = bright (max channel >= v_thresh) and unsaturated (max-min <= max_chroma)
+    v_thresh: 150
+    max_chroma: 45
+    min_area: 8                       # px, ignore specks
+    # bonnet rim of the car as seen by the (fixed) camera, polygon x1,y1,x2,y2,... in pixels
+    car_mask: [170,300, 215,272, 270,246, 340,231, 400,226, 470,227, 525,236, 560,248, 560,262, 525,252, 470,243, 400,242, 340,247, 270,262, 215,288, 170,316]
+    publish_debug_image: true

@@ -1,0 +1,25 @@
+# line_detector for the OAK-D Lite (960x540 ISP output of oak_d_lite.yaml, HFOV ~69 deg, square pixels).
+# APPROXIMATE: fx from the datasheet FOV, = (960/2)/tan(34.5 deg). Replace fx fy cx cy with the real
+# /camera/camera_info (K), measure camera_height / camera_pitch / camera_x on the car, and redo car_mask
+# from a real image (bonnet may not be visible at all with this narrower lens: then keep it empty).
+line_detector:
+  ros__parameters:
+    image_topic: /camera/image_raw
+    fx: 698.0
+    fy: 698.0
+    cx: 480.0
+    cy: 270.0
+    camera_height: 0.732
+    camera_pitch: 0.1745
+    camera_x: 0.18
+    x_min: 2.0                        # narrower lens: the nearest visible ground is further away
+    x_max: 15.0
+    lane_width: 3.25
+    road_width: 6.75
+    front_x: 1.445
+    pixel_stride: 2
+    v_thresh: 150
+    max_chroma: 45
+    min_area: 8
+    car_mask: []
+    publish_debug_image: true

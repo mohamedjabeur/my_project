@@ -1,0 +1,18 @@
+# Bosch BNO055 IMU on I2C (Raspberry Pi / Jetson). Package: bno055 (flynneva).
+# Check the address with: i2cdetect -y 1   (0x28 default, 0x29 if COM3 is high)
+bno055:
+  ros__parameters:
+    connection_type: i2c
+    i2c_bus: 1
+    i2c_addr: 0x28
+    frame_id: imu_link
+    ros_topic_prefix: bno055/
+    data_query_frequency: 50
+    calib_status_frequency: 0.1
+    operation_mode: 0x0C         # NDOF: fused orientation (absolute heading from the magnetometer)
+    placement_axis_remap: P1     # axes already aligned with the vehicle (X forward, Y left, Z up)
+    acc_factor: 100.0
+    mag_factor: 16000000.0
+    gyr_factor: 900.0
+    grav_factor: 100.0
+    set_offsets: false

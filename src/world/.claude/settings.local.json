@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//home/ubuntu/ros2/src/vehicle_description/meshes/**)",
+      "Bash(python3 -)"
+    ]
+  }
+}
